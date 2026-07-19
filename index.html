@@ -434,135 +434,6 @@ body {
   }
 }
 
-
-
-.file-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.7);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  z-index: 3000;
-}
-
-.file-modal-overlay.show {
-  display: flex;
-}
-
-.file-modal {
-  width: min(760px, 100%);
-  max-height: 90vh;
-  overflow: auto;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-}
-
-.file-modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem 1.2rem;
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  background: var(--bg-secondary);
-  z-index: 1;
-}
-
-.file-modal-title-wrap h3 {
-  margin: 0;
-  font-size: 1.1rem;
-}
-
-.file-modal-title-wrap p {
-  margin: 0.2rem 0 0;
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-}
-
-.file-modal-close {
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text-primary);
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 1.1rem;
-}
-
-.file-modal-body {
-  padding: 1rem 1.2rem 1.25rem;
-}
-
-.file-category {
-  margin-bottom: 1rem;
-}
-
-.file-category h4 {
-  margin: 0 0 0.75rem;
-  font-size: 0.98rem;
-}
-
-.file-list {
-  display: grid;
-  gap: 0.7rem;
-}
-
-.file-item {
-  border: 1px solid var(--border);
-  background: var(--bg-card);
-  border-radius: 14px;
-  padding: 0.85rem;
-}
-
-.file-item-title {
-  font-weight: 700;
-  margin-bottom: 0.55rem;
-  line-height: 1.6;
-}
-
-.file-item-actions {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.file-item-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text-primary);
-  text-decoration: none;
-  border-radius: 999px;
-  padding: 0.45rem 0.8rem;
-  font-size: 0.8rem;
-  font-family: inherit;
-  cursor: pointer;
-}
-
-.file-item-btn:hover {
-  background: var(--spec-color, var(--accent));
-  color: #fff;
-  border-color: var(--spec-color, var(--accent));
-}
-
-.file-empty {
-  color: var(--text-secondary);
-  border: 1px dashed var(--border);
-  border-radius: 14px;
-  padding: 0.9rem;
-  text-align: center;
-}
-
 </style>
 </head>
 <body id="top">
@@ -5170,155 +5041,124 @@ function toggleSemester(headerEl) {
   semester.classList.toggle('open');
 }
 
-// Library files via Cloudflare R2
+// Download / View (placeholder functions)
 const subjectFiles = {
-  "ميكانيكا الموائع": {
+  "موارد الطاقة وتطبيقاتها": {
     lectures: [
-      {
-        title: "المحاضرة 1",
-        url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-5/fluid-mechanics/lectures/lecture-1.pdf"
-      },
-      {
-        title: "المحاضرة 2",
-        url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-5/fluid-mechanics/lectures/lecture-2.pdf"
-      },
-      {
-        title: "المحاضرة 3",
-        url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-5/fluid-mechanics/lectures/lecture-3.pdf"
-      },
-      {
-        title: "المحاضرة 4",
-        url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-5/fluid-mechanics/lectures/lecture-4.pdf"
-      },
-      {
-        title: "المحاضرة 5",
-        url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-5/fluid-mechanics/lectures/lecture-5.pdf"
-      },
-      {
-        title: "المحاضرة 6",
-        url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-5/fluid-mechanics/lectures/lecture-6.pdf"
-      },
-      {
-        title: "المحاضرة 7",
-        url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-5/fluid-mechanics/lectures/lecture-7.pdf"
-      },
-      {
-        title: "المحاضرة 8",
-        url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-5/fluid-mechanics/lectures/lecture-8.pdf"
-      },
-      {
-        title: "المحاضرة 9",
-        url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-5/fluid-mechanics/lectures/lecture-9.pdf"
-      },
-      {
-        title: "المحاضرة 10",
-        url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-5/fluid-mechanics/lectures/lecture-10.pdf"
-      },
-      {
-        title: "المحاضرة 11",
-        url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-5/fluid-mechanics/lectures/lecture-11.pdf"
-      },
-      {
-        title: "المحاضرة 12",
-        url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-5/fluid-mechanics/lectures/lecture-12.pdf"
-      },
-      {
-        title: "المحاضرة 13",
-        url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-5/fluid-mechanics/lectures/lecture-13.pdf"
-      },
-      {
-        title: "المحاضرة 14",
-        url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-5/fluid-mechanics/lectures/lecture-14.pdf"
-      },
-      {
-        title: "المحاضرة 15",
-        url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-5/fluid-mechanics/lectures/lecture-15.pdf"
-      }
+      { title: "محاضرة 1", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/energy-resources-and-applications/lectures/energy_resource_lec-01.pptx" },
+      { title: "محاضرة 2", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/energy-resources-and-applications/lectures/energy_resource_lec-02.pptx" },
+      { title: "محاضرة 3", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/energy-resources-and-applications/lectures/energy_resource_lec-03.pptx" },
+      { title: "محاضرة 4", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/energy-resources-and-applications/lectures/energy_resource_lec-04.pptx" }
+    ],
+    exams: []
+  },
+  "موارد وتطبيقات الطاقة": {
+    lectures: [
+      { title: "محاضرة 1", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/energy-resources-and-applications/lectures/energy_resource_lec-01.pptx" },
+      { title: "محاضرة 2", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/energy-resources-and-applications/lectures/energy_resource_lec-02.pptx" },
+      { title: "محاضرة 3", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/energy-resources-and-applications/lectures/energy_resource_lec-03.pptx" },
+      { title: "محاضرة 4", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/energy-resources-and-applications/lectures/energy_resource_lec-04.pptx" }
+    ],
+    exams: []
+  },
+  "النمذجة والمحاكاة": {
+    lectures: [
+      { title: "محاضرة 1", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/modeling-and-simulation/lectures/modeling_simul_lecture-01.pptx" },
+      { title: "محاضرة 2", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/modeling-and-simulation/lectures/modeling_simul_lecture-02.pptx" },
+      { title: "محاضرة 3", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/modeling-and-simulation/lectures/modeling_simul_lecture-03.pptx" },
+      { title: "محاضرة 4", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/modeling-and-simulation/lectures/modeling_simul_lecture-04.pptx" },
+      { title: "محاضرة 5", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/modeling-and-simulation/lectures/modeling_simul_lecture-05.pdf" },
+      { title: "محاضرة 6", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/modeling-and-simulation/lectures/modeling_simul_lecture-06.pdf" },
+      { title: "محاضرة 7", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/modeling-and-simulation/lectures/modeling_simul_lecture-07.pptx" },
+      { title: "محاضرة 8", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/modeling-and-simulation/lectures/modeling_simul_lecture-08.pptx" }
+    ],
+    exams: []
+  },
+  "معمل الهندسة الكيميائية 1": {
+    lectures: [
+      { title: "محاضرة 1", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/chemical-engineering-laboratory-i/lectures/chemi_lab_lec-01.pdf" },
+      { title: "محاضرة 2", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/chemical-engineering-laboratory-i/lectures/chemi_lab_lec-02.pdf" },
+      { title: "محاضرة 3", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/chemical-engineering-laboratory-i/lectures/chemi_lab_lec-03.pdf" },
+      { title: "محاضرة 4", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/chemical-engineering-laboratory-i/lectures/chemi_lab_lec-04.pdf" },
+      { title: "محاضرة 5", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/chemical-engineering-laboratory-i/lectures/chemi_lab_lec-05.pdf" },
+      { title: "محاضرة 6", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/chemical-engineering-laboratory-i/lectures/chemi_lab_lec-06.pdf" },
+      { title: "محاضرة 7", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/chemical-engineering-laboratory-i/lectures/chemi_lab_lec-07.pdf" }
+    ],
+    exams: []
+  },
+  "التحكم في العمليات 1": {
+    lectures: [
+      { title: "محاضرة 1", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/process-control-i/lectures/process_control_lec-01.pdf" },
+      { title: "محاضرة 2", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/process-control-i/lectures/process_control_lec-02.pdf" },
+      { title: "محاضرة 3", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/process-control-i/lectures/process_control_lec-03.pdf" },
+      { title: "محاضرة 4", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/process-control-i/lectures/process_control_lec-04.pdf" },
+      { title: "محاضرة 5", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/process-control-i/lectures/process_control_lec-05.pdf" },
+      { title: "محاضرة 6", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/process-control-i/lectures/process_control_lec-06.pdf" },
+      { title: "محاضرة 7", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/process-control-i/lectures/process_control_lec-07.pdf" },
+      { title: "محاضرة 8", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/process-control-i/lectures/process_control_lec-08.pdf" },
+      { title: "محاضرة 9", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/process-control-i/lectures/process_control_lec-09.pdf" }
+    ],
+    exams: []
+  },
+  "انتقال الحرارة 2": {
+    lectures: [
+      { title: "محاضرة 1", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/heat-transfer-ii/lectures/heat_tran2_lec-01.pdf" },
+      { title: "محاضرة 2", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/heat-transfer-ii/lectures/heat_tran2_lec-02.pdf" },
+      { title: "محاضرة 3", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/heat-transfer-ii/lectures/heat_tran2_lec-03.pdf" },
+      { title: "محاضرة 4", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/heat-transfer-ii/lectures/heat_tran2_lec-04.pdf" },
+      { title: "محاضرة 5", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/heat-transfer-ii/lectures/heat_tran2_lec-05.pdf" },
+      { title: "محاضرة 6", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/heat-transfer-ii/lectures/heat_tran2_lec-06.pdf" },
+      { title: "محاضرة 7", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/heat-transfer-ii/lectures/heat_tran2_lec-07.pdf" },
+      { title: "محاضرة 8", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/heat-transfer-ii/lectures/heat_tran2_lec-08.pdf" },
+      { title: "محاضرة 9", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/heat-transfer-ii/lectures/heat_tran2_lec-09.pdf" },
+      { title: "محاضرة 10", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/heat-transfer-ii/lectures/heat_tran2_lec-10.pdf" },
+      { title: "محاضرة 11", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/heat-transfer-ii/lectures/heat_tran2_lec-11.pdf" },
+      { title: "محاضرة 12", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/heat-transfer-ii/lectures/heat_tran2_lec-12.pdf" },
+      { title: "محاضرة 13", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/heat-transfer-ii/lectures/heat_tran2_lec-13.pdf" }
+    ],
+    exams: []
+  },
+  "عمليات انتقال المادة 1": {
+    lectures: [
+      { title: "محاضرة 1", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/mass-transfer-operations-i/lectures/mass_tranfer_oper_lec-01.pdf" },
+      { title: "محاضرة 2", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/mass-transfer-operations-i/lectures/mass_tranfer_oper_lec-02.pdf" },
+      { title: "محاضرة 3", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/mass-transfer-operations-i/lectures/mass_tranfer_oper_lec-03.pdf" },
+      { title: "محاضرة 4", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/mass-transfer-operations-i/lectures/mass_tranfer_oper_lec-04.pdf" },
+      { title: "محاضرة 5", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/mass-transfer-operations-i/lectures/mass_tranfer_oper_lec-05.pdf" },
+      { title: "محاضرة 6", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/mass-transfer-operations-i/lectures/mass_tranfer_oper_lec-06.pdf" },
+      { title: "محاضرة 7", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/mass-transfer-operations-i/lectures/mass_tranfer_oper_lec-07.pdf" },
+      { title: "محاضرة 8", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/mass-transfer-operations-i/lectures/mass_tranfer_oper_lec-08.pdf" },
+      { title: "محاضرة 9", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/mass-transfer-operations-i/lectures/mass_tranfer_oper_lec-09.pdf" }
     ],
     exams: []
   }
 };
 
-function normalizeSubjectName(value) {
-  return String(value || '')
-    .toLowerCase()
-    .replace(/[%()_+\-]/g, ' ')
-    .replace(/[^a-z0-9؀-ۿ]+/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+function normalizeSubjectName(name) {
+  return (name || '').replace(/\s+/g, ' ').trim();
 }
 
 function getSubjectLibrary(subjectName) {
-  if (subjectFiles[subjectName]) return subjectFiles[subjectName];
   var normalized = normalizeSubjectName(subjectName);
-  for (var key in subjectFiles) {
-    if (normalizeSubjectName(key) === normalized) return subjectFiles[key];
+  if (subjectFiles[normalized]) return subjectFiles[normalized];
+  var aliases = {
+    'موارد الطاقة وتطبيقاتها': 'موارد الطاقة وتطبيقاتها',
+    'موارد وتطبيقات الطاقة': 'موارد الطاقة وتطبيقاتها'
+  };
+  if (aliases[normalized] && subjectFiles[aliases[normalized]]) return subjectFiles[aliases[normalized]];
+  var keys = Object.keys(subjectFiles);
+  for (var i = 0; i < keys.length; i++) {
+    if (normalizeSubjectName(keys[i]) === normalized) return subjectFiles[keys[i]];
   }
   return null;
 }
 
 function countSubjectFiles(subjectName) {
-  var library = getSubjectLibrary(subjectName);
-  if (!library) return 0;
-  var lectures = Array.isArray(library.lectures) ? library.lectures.length : 0;
-  var exams = Array.isArray(library.exams) ? library.exams.length : 0;
+  var subject = getSubjectLibrary(subjectName);
+  if (!subject) return 0;
+  var lectures = Array.isArray(subject.lectures) ? subject.lectures.length : 0;
+  var exams = Array.isArray(subject.exams) ? subject.exams.length : 0;
   return lectures + exams;
-}
-
-function renderFileItems(items) {
-  if (!items || !items.length) {
-    return '<div class="file-empty">لا توجد ملفات في هذا القسم بعد</div>';
-  }
-
-  return '<div class="file-list">' + items.map(function(item) {
-    return `
-      <div class="file-item">
-        <div class="file-item-title">${item.title}</div>
-        <div class="file-item-actions">
-          <a class="file-item-btn" href="${item.url}" target="_blank" rel="noopener noreferrer">👁️ عرض</a>
-          <a class="file-item-btn" href="${item.url}" download>📥 تنزيل</a>
-        </div>
-      </div>
-    `;
-  }).join('') + '</div>';
-}
-
-function openFileLibrary(subjectName) {
-  var library = getSubjectLibrary(subjectName);
-  if (!library) {
-    alert('لا توجد ملفات مرفوعة لهذه المادة بعد');
-    return;
-  }
-
-  var overlay = document.getElementById('fileModalOverlay');
-  var title = document.getElementById('fileModalTitle');
-  var subtitle = document.getElementById('fileModalSubtitle');
-  var body = document.getElementById('fileModalBody');
-
-  title.textContent = subjectName;
-  var total = countSubjectFiles(subjectName);
-  subtitle.textContent = total + ' ملف' + (total === 1 ? '' : 'ات') + ' متاحة';
-
-  body.innerHTML = `
-    <div class="file-category">
-      <h4>المحاضرات</h4>
-      ${renderFileItems(library.lectures || [])}
-    </div>
-    <div class="file-category">
-      <h4>الامتحانات</h4>
-      ${renderFileItems(library.exams || [])}
-    </div>
-  `;
-
-  overlay.classList.add('show');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeFileLibrary(event) {
-  if (event && event.target && event.target !== event.currentTarget) return;
-  var overlay = document.getElementById('fileModalOverlay');
-  if (overlay) overlay.classList.remove('show');
-  document.body.style.overflow = '';
 }
 
 function updateFileBadges() {
@@ -5326,16 +5166,55 @@ function updateFileBadges() {
     var subjectName = card.getAttribute('data-subject') || '';
     var badge = card.querySelector('.subject-file-badge');
     if (!badge) return;
-
     var total = countSubjectFiles(subjectName);
     if (total > 0) {
-      badge.textContent = total + ' ملف';
+      badge.textContent = total + ' ملفات';
       badge.classList.remove('no-file');
     } else {
       badge.textContent = 'لا يوجد ملف';
       badge.classList.add('no-file');
     }
   });
+}
+
+function ensureFileModal() {
+  var existing = document.getElementById('fileModalOverlay');
+  if (existing) return existing;
+  var style = document.createElement('style');
+  style.textContent = `.file-modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.72);display:none;align-items:center;justify-content:center;padding:1rem;z-index:5000}.file-modal-overlay.show{display:flex}.file-modal{width:min(760px,100%);max-height:90vh;overflow:auto;background:var(--bg-secondary);border:1px solid var(--border);border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.3)}.file-modal-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg-secondary);z-index:1}.file-modal-title-wrap h3{margin:0;font-size:1.05rem}.file-modal-title-wrap p{margin:.2rem 0 0;color:var(--text-secondary);font-size:.85rem}.file-modal-close{border:1px solid var(--border);background:transparent;color:var(--text-primary);width:40px;height:40px;border-radius:999px;cursor:pointer;font-size:1.1rem}.file-modal-body{padding:1rem 1.2rem 1.25rem}.file-category{margin-bottom:1rem}.file-category h4{margin:0 0 .75rem;font-size:.98rem}.file-list{display:grid;gap:.7rem}.file-item{border:1px solid var(--border);background:var(--bg-card);border-radius:14px;padding:.85rem}.file-item-title{font-weight:700;margin-bottom:.55rem;line-height:1.6}.file-item-actions{display:flex;gap:.5rem;flex-wrap:wrap}.file-item-btn{display:inline-flex;align-items:center;justify-content:center;gap:.35rem;border:1px solid var(--border);background:transparent;color:var(--text-primary);text-decoration:none;border-radius:999px;padding:.45rem .8rem;font-size:.8rem;font-family:inherit;cursor:pointer}.file-item-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}.file-empty{color:var(--text-secondary);border:1px dashed var(--border);border-radius:14px;padding:.9rem;text-align:center}`;
+  document.head.appendChild(style);
+  var overlay = document.createElement('div');
+  overlay.className = 'file-modal-overlay';
+  overlay.id = 'fileModalOverlay';
+  overlay.innerHTML = '<div class="file-modal" role="dialog" aria-modal="true" aria-labelledby="fileModalTitle"><div class="file-modal-header"><div class="file-modal-title-wrap"><h3 id="fileModalTitle">ملفات المادة</h3><p id="fileModalSubtitle">اختر المحاضرة التي تريد فتحها</p></div><button class="file-modal-close" type="button" onclick="closeFileModal()">×</button></div><div class="file-modal-body" id="fileModalBody"></div></div>';
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeFileModal(); });
+  document.body.appendChild(overlay);
+  return overlay;
+}
+
+function closeFileModal() {
+  var overlay = document.getElementById('fileModalOverlay');
+  if (overlay) overlay.classList.remove('show');
+}
+
+function buildFileItems(files) {
+  if (!files || files.length === 0) return '<div class="file-empty">لا توجد ملفات متاحة حالياً.</div>';
+  return files.map(function(file) {
+    return '<div class="file-item"><div class="file-item-title">' + file.title + '</div><div class="file-item-actions"><a class="file-item-btn" href="' + file.url + '" target="_blank" rel="noopener noreferrer">عرض</a><a class="file-item-btn" href="' + file.url + '" target="_blank" rel="noopener noreferrer" download>تحميل</a></div></div>';
+  }).join('');
+}
+
+function openFileLibrary(subjectName) {
+  var subject = getSubjectLibrary(subjectName);
+  if (!subject) {
+    alert('لا توجد محاضرات مضافة لهذه المادة حالياً: ' + subjectName);
+    return;
+  }
+  ensureFileModal();
+  document.getElementById('fileModalTitle').textContent = subjectName;
+  document.getElementById('fileModalSubtitle').textContent = 'اختر المحاضرة التي تريد فتحها أو تحميلها';
+  document.getElementById('fileModalBody').innerHTML = '<div class="file-category"><h4>المحاضرات</h4><div class="file-list">' + buildFileItems(subject.lectures) + '</div></div><div class="file-category"><h4>الامتحانات</h4><div class="file-list">' + buildFileItems(subject.exams) + '</div></div>';
+  document.getElementById('fileModalOverlay').classList.add('show');
 }
 
 function downloadFile(subjectName) {
@@ -5346,12 +5225,6 @@ function viewFile(subjectName) {
   openFileLibrary(subjectName);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  updateFileBadges();
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeFileLibrary();
-  });
-});
 
 // Search
 function searchSubjects(query) {
@@ -5414,20 +5287,7 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
 
 // Open first semester by default
 document.querySelector('.semester').classList.add('open');
+updateFileBadges();
 </script>
-
-<div class="file-modal-overlay" id="fileModalOverlay" onclick="closeFileLibrary(event)">
-  <div class="file-modal" role="dialog" aria-modal="true" aria-labelledby="fileModalTitle" onclick="event.stopPropagation()">
-    <div class="file-modal-header">
-      <div class="file-modal-title-wrap">
-        <h3 id="fileModalTitle">ملفات المادة</h3>
-        <p id="fileModalSubtitle">محاضرات وامتحانات</p>
-      </div>
-      <button class="file-modal-close" type="button" onclick="closeFileLibrary()">✕</button>
-    </div>
-    <div class="file-modal-body" id="fileModalBody"></div>
-  </div>
-</div>
-
 </body>
 </html>

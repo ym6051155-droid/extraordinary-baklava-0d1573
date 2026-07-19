@@ -5064,8 +5064,7 @@ const subjectFiles = {
   "النمذجة والمحاكاة": {
     lectures: [
       { title: "محاضرة 1", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/modeling-and-simulation/lectures/modeling_simul_lecture-01.pptx" },
-      { title: "محاضرة 2", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/modeling-and-simulation/lectures/modeling_simul_lecture-02.pptx" },
-      { title: "محاضرة 3", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/modeling-and-simulation/lectures/modeling_simul_lecture-03.pptx" },
+      { title: "محاضرة 2 و3", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/modeling-and-simulation/lectures/modeling_simul_lecture-03%2602.pptx" },
       { title: "محاضرة 4", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/modeling-and-simulation/lectures/modeling_simul_lecture-04.pptx" },
       { title: "محاضرة 5", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/modeling-and-simulation/lectures/modeling_simul_lecture-05.pdf" },
       { title: "محاضرة 6", url: "https://pub-c9e3df8f82464009bba375c7b8a18044.r2.dev/chemical-engineering/semester-7/modeling-and-simulation/lectures/modeling_simul_lecture-06.pdf" },
@@ -5197,10 +5196,20 @@ function closeFileModal() {
   if (overlay) overlay.classList.remove('show');
 }
 
+function getFileNameFromUrl(url) {
+  try {
+    return decodeURIComponent((url || '').split('/').pop() || 'file');
+  } catch (e) {
+    return (url || '').split('/').pop() || 'file';
+  }
+}
+
 function buildFileItems(files) {
   if (!files || files.length === 0) return '<div class="file-empty">لا توجد ملفات متاحة حالياً.</div>';
   return files.map(function(file) {
-    return '<div class="file-item"><div class="file-item-title">' + file.title + '</div><div class="file-item-actions"><a class="file-item-btn" href="' + file.url + '" target="_blank" rel="noopener noreferrer">عرض</a><a class="file-item-btn" href="' + file.url + '" target="_blank" rel="noopener noreferrer" download>تحميل</a></div></div>';
+    var fileName = getFileNameFromUrl(file.url);
+    var fullUrl = file.url || '';
+    return '<div class="file-item"><div class="file-item-title">' + file.title + '</div><div class="file-item-url" style="font-size:.78rem;color:var(--text-secondary);word-break:break-all;margin-bottom:.55rem;direction:ltr;text-align:left">' + fullUrl + '</div><div class="file-item-actions"><a class="file-item-btn" href="' + fullUrl + '" target="_blank" rel="noopener noreferrer">عرض</a><a class="file-item-btn" href="' + fullUrl + '" target="_blank" rel="noopener noreferrer" download="' + fileName + '">تحميل</a></div></div>';
   }).join('');
 }
 
